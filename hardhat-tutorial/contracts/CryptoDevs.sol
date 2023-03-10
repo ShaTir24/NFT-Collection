@@ -82,15 +82,15 @@ contract CryptoDevs is ERC721Enumerable, Ownable {
 
     //function to send all the ether in the contract to the owner of the contract
     function withdraw() public onlyOwner {
-        address _owner = owner();
-        uint256 amount = address(this).balance;
-        (bool sent, ) = _owner.call{value: amount}("");
+        address _owner = owner();   //returns the address of the wallet account through which the contract is deployed
+        uint256 amount = address(this).balance; //current contract's balance of ETH
+        (bool sent, ) = _owner.call{value: amount}(""); //sends ETH amount to owner
         require(sent, "Failed to send Ether");
     }
 
     //function to receive ETH, msg.data should be empty
     receive() external payable {}
 
-    //called when msg.data is non-empty
+    //called when msg.data is non-empty, to receive ETH
     fallback() external payable {}
 }
