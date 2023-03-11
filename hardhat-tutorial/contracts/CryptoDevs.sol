@@ -80,6 +80,11 @@ contract CryptoDevs is ERC721Enumerable, Ownable {
         return _baseTokenURI;
     }
 
+    //function to switch the contract from pause to unpause
+    function setPaused(bool val) public onlyOwner {
+        _paused = val;
+    }
+
     //function to send all the ether in the contract to the owner of the contract
     function withdraw() public onlyOwner {
         address _owner = owner();   //returns the address of the wallet account through which the contract is deployed

@@ -21,6 +21,7 @@ async function main() {
   console.log("CryptoDevs Contract address: ", deployedCryptoDevsContract.address);
 }
 
+//calling the main function and checking for error
 main()
   .then(() => process.exit(0))
   .catch((error) => {
